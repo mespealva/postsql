@@ -1,0 +1,27 @@
+CREATE DATABASE posts;
+--\c posts
+CREATE TABLE post(id SERIAL, usuario VARCHAR(25), fecha_de_creacion DATE, contenido VARCHAR, descripcion VARCHAR, PRIMARY KEY (id));
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Pamela', '31-08-2020', 'no especifico', 'no especifico');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Pamela', '31-08-2020', 'no especifico', 'no especifico');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Carlos', '31-08-2020', 'no especifico', 'no especifico');
+ALTER TABLE post ADD titulo VARCHAR(25);
+UPDATE post SET titulo = 'PAM' WHERE id = 1;
+UPDATE post SET titulo = 'PAM' WHERE id = 2;
+UPDATE post SET titulo = 'CAR' WHERE id = 3;
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Pedro', '31-08-2020', 'no especifico', 'no especifico', 'PED');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Pedro', '31-08-2020', 'no especifico', 'no especifico', 'PED');
+DELETE FROM post WHERE id = 3;
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Carlos', '31-08-2020', 'no especifico', 'no especifico', 'CAR');
+CREATE TABLE comentarios(id SERIAL, fecha_hora_creacion TIMESTAMP, contenido VARCHAR, id_post INT, PRIMARY KEY (id), FOREIGN KEY (id_post) REFERENCES post(id));
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('01-09-2020 14:00:00', 'no especifico', 1);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 17:45:20', 'no especifico', 1);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 13:30:00', 'no especifico', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 10:34:12', 'no especifico', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 12:12:12', 'no especifico', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 15:59:50', 'no especifico', 6);
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Margarita', '31-08-2020', 'no especifico', 'no especifico', 'MAR');
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 16:01:02', 'no especifico', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 11:11:10', 'no especifico', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 09:23:12', 'no especifico', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 22:10:22', 'no especifico', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('31-08-2020 19:54:45', 'no especifico', 7);
